@@ -66,11 +66,11 @@ public class KakaoBookOpenAPIUse {
 
 			// meta 속성의 내용을 JSONObject로 가져오기
 			JSONObject meta = json.getJSONObject("meta");
-			// System.out.println(meta);
+			System.out.println(meta);
 
 			// total_count 속성의 값을 정수로 가져오기
 			total_count = meta.getInt("total_count");
-			// System.out.println(total_count);
+			System.out.println(total_count);
 
 		} catch (Exception e) {
 			System.err.println("데이터 개수 가져오기 실패");
@@ -85,7 +85,7 @@ public class KakaoBookOpenAPIUse {
 		// 페이지 개수를 계싼 전체 데이터 개수(total_count)와 페이지당 출력 개수(perPage)를 이용
 		// 서버 프로그래밍에서는 출력할 페이지 개수를 설정하는 데 이용
 		// 클라이언트 프로그래밍서는 읽어야할 페이지지 개수를 설정하는 데 이용
-		int pageCnt = (int) ((double) total_count / perPage + (double) (perPage) - 1 / perPage);
+		int pageCnt = (int) ((double) total_count / perPage + (double) (perPage - 1) / perPage);
 		// System.out.println(pageCnt);
 
 		// 데이터를 저장할 변수

@@ -1,4 +1,4 @@
-package dataparsing_xml;
+package dataparsing_csv;
 
 public class Crime {
 	private String num;

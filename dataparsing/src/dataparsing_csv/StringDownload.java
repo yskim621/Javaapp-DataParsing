@@ -1,4 +1,4 @@
-package dataparsing_xml;
+package dataparsing_csv;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

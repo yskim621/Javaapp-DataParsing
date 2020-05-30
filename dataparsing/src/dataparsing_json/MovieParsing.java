@@ -34,7 +34,7 @@ public class MovieParsing {
 			con.setUseCaches(false); // 이전에 받은 데이터 사용 여부
 			
 			// 문자열을 읽을 스트림을 생성
-			// 읽은 내용이 께질 때는 con.getInputStream다음에 "인코딩 방식"을 추가
+			// 읽은 내용이 깨질 때는 con.getInputStream다음에 "인코딩 방식"을 추가
 			BufferedReader br = new BufferedReader(new InputStreamReader(con.getInputStream()));
 			
 			// 문자열을 읽기 위한 임시변수 생성 - StringBuilder
@@ -64,7 +64,7 @@ public class MovieParsing {
 			System.err.println(e.getMessage());
 			e.printStackTrace();
 		}
-		// System.out.println(jsonString);
+		System.out.println(jsonString);
 		
 		// 파싱 결과를 저장할 변수를 생성
 		// title과 ratingAverage를 Map에 저장 - Map or DTO 중 선택 필요
@@ -81,17 +81,17 @@ public class MovieParsing {
 				
 				// 첫번째는 JSON 객체
 				JSONObject mainData = new JSONObject(jsonString);
-				// System.out.println(mainData);
+				//System.out.println(mainData);
 				
 				// hoppin이라는 key의 값을 객체로 가져오기
 				JSONObject hoppin = mainData.getJSONObject("hoppin");
-				System.out.println(hoppin);
+				//System.out.println(hoppin);
 				
 				JSONObject movies = hoppin.getJSONObject("movies");
 				//System.out.println(movies);
 				
 				JSONArray movie = movies.getJSONArray("movie");
-				System.out.println(movie);
+				//System.out.println(movie);
 				
 				for(int i=0; i<movie.length(); i = i+1) {
 					JSONObject imsi = movie.getJSONObject(i);
@@ -145,6 +145,7 @@ public class MovieParsing {
 
 			// list를 순회하면서 데이터를 테이블에 삽입하기
 			for(Map<String, Object> map : list) {
+				// SQL 실행 객체 생성
 				PreparedStatement pstmt = con.prepareStatement("insert into movie(title, ratingAverage) values(?,?)");
 				// Map에서 가져올 때는 원래 자료형으로 형 변환해야 한다.
 				pstmt.setString(1, (String)map.get("title"));
