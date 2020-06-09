@@ -165,7 +165,7 @@ public class DongaCrawlingForAndroid {
 		
 		// 현재 디렉토리에 박문석.txt 파일에 기사 내용 저장
 		// try() 안에 만든 객체는 close를 호출할 필요가 없음
-		try (PrintWriter pw = new PrintWriter("./박문석.txt")) {
+		try (PrintWriter pw = new PrintWriter("./박문석기사저장.txt")) {
 			for (String link : list) {
 				try {
 					URL url = new URL(link);
